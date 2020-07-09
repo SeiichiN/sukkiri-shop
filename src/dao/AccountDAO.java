@@ -24,7 +24,7 @@ public class AccountDAO {
 
             String sql =
                 "create table if not exists account (" +
-                "user_id char(10) not null auto_increment primary key, " +
+                "user_id varchar(10) not null primary key, " +
                 "pass varchar(50) not null, " +
                 "mail varchar(50) not null, " +
                 "name varchar(100) not null, " +
@@ -39,6 +39,7 @@ public class AccountDAO {
                 return false;
             }
         } catch (SQLException e) {
+            System.out.println("createTableで、例外が発生しました。");
             e.printStackTrace();
             return false;
         } 
@@ -76,6 +77,7 @@ public class AccountDAO {
                 account = new Account( userId, pass, mail, name, age);
             }
         } catch (SQLException e) {
+            System.out.println("findByLoginで例外が発生しました。");
             e.printStackTrace();
             return null;
         }
@@ -109,6 +111,7 @@ public class AccountDAO {
                 return false;
             }
         } catch (SQLException e) {
+            System.out.println("registerAccountで例外が発生しました。");
             e.printStackTrace();
             return false;
         }

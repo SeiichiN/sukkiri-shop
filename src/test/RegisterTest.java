@@ -18,7 +18,7 @@ public class RegisterTest {
 
     // 正しいデータを渡した場合
     public static void testRegister1 () {
-        Account account = new Account ("yukiko", "qwer", "yukkie@higashi.jp", "東山 友紀子", 28);
+        Account account = new Account ("yukiko", "1234", "yukkie@higashi.jp", "東山 友紀子", 28);
         AccountDAO dao = new AccountDAO ();
         boolean result = dao.registerAccount( account );
 
