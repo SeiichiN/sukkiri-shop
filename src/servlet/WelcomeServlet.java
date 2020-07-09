@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.CreateTableLogic;
+
 @WebServlet("/WelcomeServlet")
 public class WelcomeServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -18,6 +20,9 @@ public class WelcomeServlet extends HttpServlet {
         throws ServletException, IOException {
 
         System.out.println("WelcomeServlet here!");
+
+        CreateTableLogic.execute();
+        System.out.println("Table Check!");
         
         RequestDispatcher dispatcher =
             request.getRequestDispatcher("/WEB-INF/jsp/welcome.jsp");

@@ -18,6 +18,33 @@ public class AccountDAO {
     private final String DB_USER = "sa";
     private final String DB_PASS = "";
 
+    public boolean createTable() {
+        try ( Connection conn =
+              DriverManager.getConnection (JDBC_URL, DB_USER, DB_PASS)) {
+
+            String sql =
+                "create table if not exists account (" +
+                "user_id char(10) not null auto_increment primary key, " +
+                "pass varchar(50) not null, " +
+                "mail varchar(50) not null, " +
+                "name varchar(100) not null, " +
+                "age int )";
+            PreparedStatement pStmt = conn.prepareStatement( sql );
+            int result = pStmt.executeUpdate();
+
+            if (result > 0) {
+                System.out.println("テーブルを作成しました");
+            } else {
+                System.out.println("テーブルを作成できませんでした");
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } 
+        return true;
+    }
+
     /**
      * ユーザー名とパスワードをクラス(構造体)で受け取って照合する
      * @return:

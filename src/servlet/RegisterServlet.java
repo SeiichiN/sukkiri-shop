@@ -47,12 +47,15 @@ public class RegisterServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute( "userId", userId );
 
+            System.out.println("登録成功");
+
             RequestDispatcher dispatcher =
                 request.getRequestDispatcher("/WEB-INF/jsp/loginOK.jsp");
             dispatcher.forward( request, response );
         }
         // 登録失敗
         else {
+            System.out.println("登録失敗");
             response.sendRedirect("/sukkiriShop/WelcomeServlet");
         }
         
