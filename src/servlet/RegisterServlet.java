@@ -1,0 +1,63 @@
+package servlet;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import model.Account;
+import model.AccountLogic;
+
+@WebServlet("/RegisterServlet")
+public class RegisterServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    protected void doGet (HttpServletRequest request,
+                          HttpServletResponse response)
+        throws ServletException, IOException {
+
+        System.out.println("RegisterServlet here!");
+        
+        RequestDispatcher dispatcher =
+            request.getRequestDispatcher("/WEB-INF/jsp/register.jsp");
+        dispatcher.forward( request, response );
+    }
+
+    protected void doPost (HttpServletRequest request,
+                           HttpServletResponse response)
+        throws ServletException, IOException {
+
+        request.setCharacterEncoding("UTF-8");
+        String userId = request.getParameter("userId");
+        String pass = request.getParameter("pass");
+        String mail = request.getParameter("mail");
+        String name = request.getParameter("name");
+        int age = Integer.parseInt( request.getParameter("age") );
+
+        Account account = new Account( userId, pass, mail, name, age);
+        boolean result = AccountLogic.execute( account );
+
+        // 登録成功
+        if (result) {
+            HttpSession session = request.getSession();
+            session.setAttribute( "userId", userId );
+
+            RequestDispatcher dispatcher =
+                request.getRequestDispatcher("/WEB-INF/jsp/loginOK.jsp");
+            dispatcher.forward( request, response );
+        }
+        // 登録失敗
+        else {
+            response.sendRedirect("/sukkiriShop/WelcomeServlet");
+        }
+        
+    }
+    
+}
+
+// 修正時刻： Wed Jul  8 20:59:09 2020

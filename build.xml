@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<project name="sukkiriShop" default="compile" basedir=".">
+  <target name="compile">
+      <javac includeAntRuntime="false"
+             encoding="UTF-8"
+             srcdir="./src"
+             destdir="./WEB-INF/classes"
+             classpath="/opt/apache-tomcat-9.0.31/lib/servlet-api.jar;
+                        /opt/apache-tomcat-9.0.31/lib/jsp-api.jar;
+                        /opt/apache-tomcat-9.0.31/lib/lib/h2-1.4.199.jar" />
+  </target>
+</project>
+
+<!-- 修正時刻： Wed Jul  8 06:16:25 2020 -->

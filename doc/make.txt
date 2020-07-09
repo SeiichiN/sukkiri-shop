@@ -1,0 +1,44 @@
+
+アカウントの登録機能をつくる。
+
+1) src/dao/AccountDAO.java に registerAccount メソッドをつくる。
+
+2) テストをする /src/test/RegisterTest.java
+
+3) src/model/AccountLogic.java をつくる。
+
+4) src/servlet/RegisterServlet.java をつくる。
+
+5) WEB-INF/jsp/register.jsp をつくる。
+
+6) WEB-INF/jsp/welcome.jsp を修正する。
+
+
+アカウントの削除機能をつくる。
+
+1) src/dao/AccountDAO.java に deleteAccount メソッドをつくる。
+
+2) テストをする。src/test/DeleteTest.java
+
+3) src/model/DeleteLogic.java をつくる。
+
+4) src/servlet/DeleteServlet.java をつくる。
+
+5) WEB-INF/jsp/accountInfo.jsp をつくる。
+
+6) WEB-INF/jsp/loginOK.jsp を修正して、「アカウント情報」ページへのリンクを作成する。
+
+
+アカウントの修正機能をつくる。
+
+1) src/dao/AccountDAO.java に updateAccount メソッドをつくる。
+
+2) テストをする。 src/test/UpdateTest.java
+
+3) src/model/UpdateLogic.java をつくる。
+
+4) src/servlet/UpdateServlet.java をつくる。
+
+5) WEB-INF/jsp/update.jsp をつくる。
+
+6) WEB-INF/jsp/accountInfo.jsp を修正する。
