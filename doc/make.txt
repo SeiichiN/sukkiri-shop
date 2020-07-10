@@ -1,3 +1,8 @@
+jstlを使うには、
+https://repo1.maven.org/maven2/javax/servlet/jsp/jstl/jstl-api/1.2/jstl-api-1.2.jar
+https://repo1.maven.org/maven2/org/glassfish/web/jstl-impl/1.2/jstl-impl-1.2.jar
+この２つのjarファイルをダウンロードし、./WEB-INF/lib ディレクトリにおいて、Tomcat を再起動する。
+
 
 アカウントの登録機能をつくる。
 
