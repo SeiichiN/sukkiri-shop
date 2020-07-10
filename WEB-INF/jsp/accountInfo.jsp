@@ -9,14 +9,25 @@
   </head>
   <body>
     <h1>アカウント情報</h1>
-    ユーザーID: ${account.userId}<br/>
-    パスワード: ${account.pass}<br/>
-    メールアドレス: ${account.mail}<br/>
-    名前: ${account.name}<br/>
-    年齢: ${account.age}<br/>
-    <p><a href="/sukkiriShop/EditAccount">編集</a></p>
+    <div id="account-info">
+      ユーザーID: ${account.userId}<br/>
+      パスワード: ${account.pass}<br/>
+      メールアドレス: ${account.mail}<br/>
+      名前: ${account.name}<br/>
+      年齢: ${account.age}<br/>
+    </div>
+    <div id="account-edit"><a href="/sukkiriShop/EditServlet">編集</a></div>
+    <div id="account-delete" onclick="kakunin()">削除</div>
     <p><a href="/sukkiriShop/WelcomeServlet">もどる</a></p>
+    <script>
+     function kakunin() {
+       const yesno = confirm("削除します。よろしいですか？");
+       if (yesno) {
+         location.href = "/sukkiriShop/DeleteServlet";
+       }
+     }
+    </script>
   </body>
 </html>
 
-<!-- 修正時刻： Fri Jul 10 20:23:57 2020 -->
+<!-- 修正時刻： Sat Jul 11 07:48:31 2020 -->
