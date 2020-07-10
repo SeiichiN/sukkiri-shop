@@ -19,16 +19,15 @@ public class AccountDAO {
     private final String DB_PASS = "";
 
     public boolean createTable() {
-        try ( Connection conn =
-              DriverManager.getConnection (JDBC_URL, DB_USER, DB_PASS)) {
-
+        try (Connection conn =
+             DriverManager.getConnection (JDBC_URL, DB_USER, DB_PASS)) {
             String sql =
                 "create table if not exists account (" +
-                "user_id varchar(10) not null primary key, " +
-                "pass varchar(50) not null, " +
-                "mail varchar(50) not null, " +
-                "name varchar(100) not null, " +
-                "age int )";
+                "user_id char(10) not null primary key, " +
+                "pass varchar(10) not null, " +
+                "mail varchar(100) not null, " +
+                "name varchar(40) not null, " +
+                "age int not null)";
             PreparedStatement pStmt = conn.prepareStatement( sql );
             int result = pStmt.executeUpdate();
 
@@ -56,7 +55,7 @@ public class AccountDAO {
     public Account findByLogin (Login login) {
         Account account = null;
 
-        try ( Connection conn =
+        try (Connection conn =
               DriverManager.getConnection (JDBC_URL, DB_USER, DB_PASS)) {
 
             String sql =
@@ -93,7 +92,7 @@ public class AccountDAO {
      *   false -- 登録失敗
      */
     public boolean registerAccount (Account account) {
-        try ( Connection conn =
+        try (Connection conn =
               DriverManager.getConnection( JDBC_URL, DB_USER, DB_PASS )) {
 
             String sql =
@@ -117,6 +116,31 @@ public class AccountDAO {
         }
         return true;
     }
+
+    /**
+     * アカウントを削除する
+     * @param: userId -- String ユーザーID
+     * @return: boolean
+     */
+    public boolean deleteAccount ( String userId ) {
+        try (Connection conn =
+              DriverManager.getConnection( JDBC_URL, DB_USER, DB_PASS )) {
+
+            String sql =
+                "delete from account where user_id = ?";
+            PreparedStatement pStmt = conn.prepareStatement( sql );
+            pStmt.setString( 1, userId );
+            int result = pStmt.executeUpdate();
+            if (result < 1) {
+                System.out.println(userId + " を削除できませんでした");
+                return false;
+            }
+        } catch (SQLException e) {
+            System.out.println("deleteAccountで例外が発生しました");
+            e.printStackTrace();
+        }
+        return true;
+    }
 }
 
-// 修正時刻： Wed Jul  8 21:47:12 2020
+// 修正時刻： Fri Jul 10 10:11:01 2020

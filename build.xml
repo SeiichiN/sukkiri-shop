@@ -1,14 +1,32 @@
 <?xml version="1.0" ?>
 <project name="sukkiriShop" default="compile" basedir=".">
-  <target name="compile">
-      <javac includeAntRuntime="false"
-             encoding="UTF-8"
-             srcdir="./src"
-             destdir="./WEB-INF/classes"
-      classpath="C:/pleiades/tomcat/9/lib/servlet-api.jar;
-      C:/pleiades/tomcat/9/lib/jsp-api.jar;
-      C:/pleiades/tomcat/9/lib/h2-1.4.199.jar" />
+  <property name="src.dir" value="./src" />
+  <property name="dest.dir" value="./WEB-INF/classes" />
+  <property name="lib.dir" value="/opt/apache-tomcat-9.0.31/lib" />
+  <property name="build.dir" value="./WEB-INF/classes" />
+
+  <path id="classpath">
+    <pathelement location="${lib.dir}/servlet-api.jar" />
+    <pathelement location="${lib.dir}/jsp-api.jar" />
+    <pathelement location="${lib.dir}/h2-1.4.199.jar" />
+  </path>
+  
+  <target name="compile" depends="make_build.dir">
+    <javac includeAntRuntime="false"
+           encoding="UTF-8"
+           srcdir="${src.dir}"
+           destdir="${dest.dir}"
+           classpathref="classpath"
+           />
+  </target>
+
+  <target name="make_build.dir">
+    <mkdir dir="${build.dir}" />
+  </target>
+  
+  <target name="clean">
+    <delete dir="${build.dir}" />
   </target>
 </project>
 
-<!-- 修正時刻： Wed Jul  8 06:16:25 2020 -->
+<!-- 修正時刻： Fri Jul 10 08:32:49 2020 -->
