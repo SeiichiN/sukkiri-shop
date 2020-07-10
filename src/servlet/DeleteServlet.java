@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.DeleteLogic;
+
 @WebServlet("/DeleteServlet")
 public class DeleteServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -53,4 +55,4 @@ public class DeleteServlet extends HttpServlet {
     }
 }
 
-// 修正時刻： Wed Jul  8 20:59:09 2020
+// 修正時刻： Fri Jul 10 20:10:13 2020

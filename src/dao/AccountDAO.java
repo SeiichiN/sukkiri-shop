@@ -141,6 +141,45 @@ public class AccountDAO {
         }
         return true;
     }
+
+    /**
+     * ユーザー情報を提供する
+     * @param:
+     *   userId -- String
+     * @return:
+     *   account -- ユーザー名とパスワードがデータベースに存在するならば
+     *          そのユーザーの情報を返す(Accountクラス)
+     *   null -- もし存在しないならば account には null が入る
+     */
+    public Account getAccountInfo (String userId) {
+        Account account = null;
+
+        try (Connection conn =
+              DriverManager.getConnection (JDBC_URL, DB_USER, DB_PASS)) {
+
+            String sql =
+                "select user_id, pass, mail, name, age from account" +
+                " where user_id = ?";
+            PreparedStatement pStmt = conn.prepareStatement( sql );
+            pStmt.setString( 1, userId );
+
+            ResultSet rs = pStmt.executeQuery();
+
+            if (rs.next()) {
+                userId = rs.getString("user_id");
+                String pass = rs.getString("pass");
+                String mail = rs.getString("mail");
+                String name = rs.getString("name");
+                int age = rs.getInt("age");
+                account = new Account( userId, pass, mail, name, age);
+            }
+        } catch (SQLException e) {
+            System.out.println("getAccountInfoで例外が発生しました。");
+            e.printStackTrace();
+            return null;
+        }
+        return account;
+    }
 }
 
-// 修正時刻： Fri Jul 10 10:11:01 2020
+// 修正時刻： Fri Jul 10 20:08:51 2020
