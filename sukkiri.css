@@ -15,4 +15,31 @@ dd::before {
   cursor: pointer;
 }
 
-/* 修正時刻： Sun Jul 12 11:54:21 2020 */
+/*********************************
+   アカウント編集
+ *********************************/
+#account-edit-area {
+  width: 300px;
+  padding: 20px;
+  background-color: #fff;
+  /* 左右中央に寄せる */
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+}
+
+#close-btn {
+  width: 50px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  cursor: pointer;
+  border: solid 1px #888;
+  color: #666;
+  font-weight: bold;
+}
+
+/* 修正時刻： Mon Jul 13 07:42:47 2020 */

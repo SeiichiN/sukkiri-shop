@@ -180,6 +180,43 @@ public class AccountDAO {
         }
         return account;
     }
+
+    /**
+     * アカウントを更新する
+     * @param:
+     *   account - クラス(構造体データ) userId, pass, mail, name, age
+     * @return:
+     *   true -- 更新成功
+     *   false -- 更新失敗
+     */
+    public boolean updateAccount (Account account) {
+        try (Connection conn =
+              DriverManager.getConnection( JDBC_URL, DB_USER, DB_PASS )) {
+
+            String sql =
+                "update account set pass = ?, mail = ?, name = ?, age = ? " +
+                " where user_id = ?";
+            PreparedStatement pStmt = conn.prepareStatement( sql );
+            pStmt.setString( 1, account.getPass() );
+            pStmt.setString( 2, account.getMail() );
+            pStmt.setString( 3, account.getName() );
+            pStmt.setInt( 4, account.getAge() );
+            pStmt.setString( 5, account.getUserId() );
+
+            int result = pStmt.executeUpdate();
+            if (result < 1) {
+                System.out.println("更新失敗");
+                return false;
+            }
+        } catch (SQLException e) {
+            System.out.println("registerAccountで例外が発生しました。");
+            e.printStackTrace();
+            return false;
+        }
+        System.out.println("更新成功");
+        return true;
+    }
+
 }
 
-// 修正時刻： Fri Jul 10 20:08:51 2020
+// 修正時刻： Mon Jul 13 08:07:17 2020
