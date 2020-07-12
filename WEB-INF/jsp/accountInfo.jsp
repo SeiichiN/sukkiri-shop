@@ -6,6 +6,7 @@
   <head>
     <meta charset="UTF-8"/>
     <title>アカウント情報 - スッキリ商店</title>
+    <link rel="stylesheet" href="sukkiri.css"/>
   </head>
   <body>
     <h1>アカウント情報</h1>
@@ -16,8 +17,13 @@
       名前: ${account.name}<br/>
       年齢: ${account.age}<br/>
     </div>
-    <div id="account-edit"><a href="/sukkiriShop/EditServlet">編集</a></div>
-    <div id="account-delete" onclick="kakunin()">削除</div>
+    <form action="/sukkiriShop/EditServlet" method="post">
+      <div id="account-edit" class="link-type">編集</div>
+    </form>
+    <form action="/sukkiriShop/DeleteServlet" method="post">
+      <input type="hidden" name="userId" value="${account.userId}"/>
+      <div id="account-delete" class="link-type" onclick="kakunin()">削除</div>
+    </form>
     <p><a href="/sukkiriShop/WelcomeServlet">もどる</a></p>
     <script>
      function kakunin() {
@@ -30,4 +36,4 @@
   </body>
 </html>
 
-<!-- 修正時刻： Sat Jul 11 07:48:31 2020 -->
+<!-- 修正時刻： Sun Jul 12 10:28:45 2020 -->

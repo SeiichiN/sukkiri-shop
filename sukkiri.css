@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+.link-type {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* 修正時刻： Sun Jul 12 10:28:24 2020 */

@@ -38,8 +38,7 @@ public class DeleteServlet extends HttpServlet {
 
         // 成功
         if (result) {
-            HttpSession session = request.getSession();
-            session.setAttribute( "userId", userId );
+            request.setAttribute( "userId", userId );
 
             System.out.println("削除成功");
 
@@ -55,4 +54,4 @@ public class DeleteServlet extends HttpServlet {
     }
 }
 
-// 修正時刻： Fri Jul 10 20:10:13 2020
+// 修正時刻： Sun Jul 12 10:02:11 2020
