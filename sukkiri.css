@@ -1,8 +1,18 @@
 @charset "UTF-8";
 
+dt {
+  width: 110px;
+  float: left;
+  margin-right: 10px;
+}
+
+dd::before {
+  content: ":";
+}
+
 .link-type {
   text-decoration: underline;
   cursor: pointer;
 }
 
-/* 修正時刻： Sun Jul 12 10:28:24 2020 */
+/* 修正時刻： Sun Jul 12 11:54:21 2020 */

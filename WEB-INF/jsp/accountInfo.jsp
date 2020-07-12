@@ -11,11 +11,13 @@
   <body>
     <h1>アカウント情報</h1>
     <div id="account-info">
-      ユーザーID: ${account.userId}<br/>
-      パスワード: ${account.pass}<br/>
-      メールアドレス: ${account.mail}<br/>
-      名前: ${account.name}<br/>
-      年齢: ${account.age}<br/>
+      <dl class="clearfix">
+        <dt>ユーザーID</dt> <dd id="account-id">${account.userId}<br/></dd>
+        <dt>パスワード</dt> <dd id="account-pass">${account.pass}<br/></dd> 
+        <dt>メールアドレス</dt> <dd id="account-mail">${account.mail}<br/></dd>
+        <dt>名前</dt> <dd id="account-name">${account.name}<br/></dd>
+        <dt>年齢</dt> <dd id="account-age">${account.age}<br/></dd>
+      </dl>
     </div>
     <form action="/sukkiriShop/EditServlet" method="post">
       <div id="account-edit" class="link-type">編集</div>
@@ -33,7 +35,8 @@
        }
      }
     </script>
+    <script src="accountEdit.js"></script>
   </body>
 </html>
 
-<!-- 修正時刻： Sun Jul 12 10:28:45 2020 -->
+<!-- 修正時刻： Sun Jul 12 12:08:51 2020 -->
