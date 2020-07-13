@@ -145,3 +145,66 @@ index.html の内容は以下とする。
 
 ```http://localhost:8080/sukkiriShop```
 
+# Antの設定ファイル
+
+Antの設定ファイルは build.xml である。
+
+これをプロジェクトフォルダ sukkiri-shop の中のルート（トップ）におく。  
+build.xmlを新規作成して、内容を以下のようにする。
+
+build.xml
+```
+<?xml version="1.0" ?>
+<project name="sukkiriShop" default="compile" basedir=".">
+  <property name="src.dir" value="./src" />
+  <property name="dest.dir" value="./WEB-INF/classes" />
+  <property name="lib.dir" value="C:/pleiades/tomcat/9/lib" />
+  <property name="build.dir" value="./WEB-INF/classes" />
+
+  <path id="classpath">
+    <pathelement location="${lib.dir}/servlet-api.jar" />
+    <pathelement location="${lib.dir}/jsp-api.jar" />
+    <pathelement location="${lib.dir}/h2-1.4.199.jar" />
+  </path>
+  
+  <target name="compile" depends="make_build.dir">
+    <javac includeAntRuntime="false"
+           encoding="UTF-8"
+           srcdir="${src.dir}"
+           destdir="${dest.dir}"
+           classpathref="classpath"
+           />
+  </target>
+
+  <target name="make_build.dir">
+    <mkdir dir="${build.dir}" />
+  </target>
+  
+  <target name="clean">
+    <delete dir="${build.dir}" />
+  </target>
+</project>
+```
+
+> ant [Enter]  
+とすると、コンパイルが始まる。
+
+ソースディレクトリは ./src である。  
+コンパイルして保存する先は、./WEB-INF/classes である。
+
+コンパイルオプションとして、includeAntRuntime="false" と encoding="UTF-8" を指定している。
+
+includeAntRuntime="false" は、
+```"warning: 'includeantruntime' was not set, defaulting to build.sysclasspath=last; set to false for repeatable builds"```
+という Warningを出力させないために指定している。  
+true だと、Antのランタイム・ライブラリを含むという設定になる。が、これは不必要である。
+だから、false と指定するのだけれど、これを指定すると、システム環境変数の CLASSPATH を参照しなくなる。  
+したがって、"classpath"指定で、"jsp-api.jar" と "servlet-api.jar" を指定している。
+
+encoding="UTF-8"　は、Windows環境だと、文字化けするからである。
+
+コンパイル時に自動的に make_build.dir 処理をおこなっている。もし、./WEB-INF/classes が存在するならば、何もしない。
+
+> ant clean [Enter] で、./WEB-INF/classes を削除できる。
+
+
