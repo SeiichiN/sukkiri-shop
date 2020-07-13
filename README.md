@@ -93,7 +93,7 @@ http://localhost:8080/ にアクセスして、Tomcatのページが表示され
 
 C:\pleiades\tomcat\9\conf フォルダの中に tomcat-users.xml があるので、それを好みのエディタで開く。
 
-末尾の </tomcat-users> のすぐ上に、以下の2行を追加する。
+末尾の ```</tomcat-users>``` のすぐ上に、以下の2行を追加する。
 ``` xml
   <role rolename="manager-gui"/>
   <user username="tomcat" password="tomcat" roles="manager-gui"/>
@@ -104,7 +104,7 @@ C:\pleiades\tomcat\9\conf フォルダの中に tomcat-users.xml があるので
 
 ## Tomcatへのプロジェクトフォルダの登録。
 
-C:\pleiades\tomcat\9\conf フォルダの中に Catalina フォルダを作成し、その中に locakhost フォルダを作成する。
+C:\pleiades\tomcat\9\conf フォルダの中に Catalina フォルダを作成し、その中に localhost フォルダを作成する。
 
 その中に、sukkiriShop.xml というファイルを作成し、内容を以下とする。
 
@@ -204,7 +204,7 @@ true だと、Antのランタイム・ライブラリを含むという設定に
 だから、false と指定するのだけれど、これを指定すると、システム環境変数の CLASSPATH を参照しなくなる。  
 したがって、"classpath"指定で、"jsp-api.jar" と "servlet-api.jar" を指定している。
 
-encoding="UTF-8"　は、Windows環境だと、文字化けするからである。
+encoding="UTF-8"　は、Windows環境だと、これを指定しないとコンパイルできない。
 
 コンパイル時に自動的に make_build.dir 処理をおこなっている。もし、./WEB-INF/classes が存在するならば、何もしない。
 
@@ -212,4 +212,4 @@ encoding="UTF-8"　は、Windows環境だと、文字化けするからである
 
 
 
-修正時刻： Mon Jul 13 19:57:07 2020
+修正時刻： Tue Jul 14 06:49:57 2020
