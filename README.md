@@ -1,6 +1,10 @@
 # sukkiri-shop
 すっきりわかるJSP&amp;サーブレット入門第13章に追加する
 
+ここでは、Eclipse を使わずに、pleiadesをインストールしたときにいっしょにインストールされるJava開発環境とTomcatを使って、好みのエディタを用いて開発することとする。
+
+プロジェクトフォルダは、ドキュメントフォルダに sukkiri-shop というフォルダを作成して、それを指定する。
+
 # 環境設定
 
 Pleiades をフルセット(all in one)でインストールすると、Java開発環境とTomcatもインストールされる。
@@ -80,3 +84,61 @@ Tomcat-start をダブルクリックすることで、コマンドプロンプ�
 これで Tomcat が起動している。
 
 http://localhost:8080/ にアクセスして、Tomcatのページが表示されていればＯＫ。
+
+## Tomcat Webアプリケーションマネージャーの起動
+
+アプリケーションマネージャーは、初期設定では起動できない。ユーザー名とパスワードを登録する必要がある。
+
+C:\pleiades\tomcat\9\conf フォルダの中に tomcat-users.xml があるので、それを好みのエディタで開く。
+
+末尾の </tomcat-users> のすぐ上に、以下の2行を追加する。
+'''
+  <role rolename="manager-gui"/>
+  <user username="tomcat" password="tomcat" roles="manager-gui"/>
+</tomcat-users> <!-- この上に追加する -->
+'''
+ユーザー名とパスワードを同じにしておいた。
+
+## Tomcatへのプロジェクトフォルダの登録。
+
+C:\pleiades\tomcat\9\conf フォルダの中に Catalina フォルダを作成し、その中に locakhost フォルダを作成する。
+
+その中に、sukkiriShop.xml というファイルを作成し、内容を以下とする。
+
+'''
+<?xml version='1.0' encoding='utf-8'?>
+<Context path="/sukkiriShop" docBase="C:\Users\user\Documents\sukkiri-shop" />
+'''
+
+sukkiri-shop フォルダは以下のようにする。
+
+'''
+./
+├── WEB-INF
+│   ├── classes
+│   ├── jsp
+│   └── lib
+├── index.html
+└── src
+'''
+
+index.html の内容は以下とする。
+
+'''
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>すっきり</title>
+</head>
+<body>
+  <h1>すっきり</h1>
+</body>
+</html>
+'''
+
+デスクトップにある Tomcat-start というショートカットをダブルクリックして Tomcat を起動する。
+以下のURLにアクセスして、「すっきり」のページが表示されれば、フォルダがTomcatに登録されていることが確認できたことになる。
+
+'''http://localhost:8080/sukkiriShop'''
+
