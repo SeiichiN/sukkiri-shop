@@ -9,7 +9,7 @@
 
 Pleiades をフルセット(all in one)でインストールすると、Java開発環境とTomcatもインストールされる。
 
-[Eplipse 2020] (https://mergedoc.osdn.jp/#pleiades.html)
+[Eplipse 2020](https://mergedoc.osdn.jp/#pleiades.html)
 
 ここでは、Pleiades が C:\pleiades にインストールされたものとする。
 
@@ -25,7 +25,7 @@ CLASSPATH = C:\pleiades\tomcat\9\lib\servlet-api.jar;C:\pleiades\tomcat\9\lib\js
 
 Ant もインストールすると便利である。
 
-[Antのダウンロード] (https://ant.apache.org/bindownload.cgi)
+[Antのダウンロード](https://ant.apache.org/bindownload.cgi)
 
 1.10.8 .zip archive: apache-ant-1.10.8-bin.zip 
 
@@ -46,7 +46,7 @@ PATHに入れるディレクトリ
 
 ## H2のインストール
 
-[H2 Donwnloads] (http://www.h2database.com/html/download.html)
+[H2 Donwnloads](http://www.h2database.com/html/download.html)
 
 Version 1.4.200 の Windows Installer か、もしくは
 Version 1.4.199 Last Stable の Windows Installer をダウンロード。
