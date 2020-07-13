@@ -9,7 +9,7 @@
 
 Pleiades をフルセット(all in one)でインストールすると、Java開発環境とTomcatもインストールされる。
 
-[Eplipse 2020](https://mergedoc.osdn.jp/#pleiades.html)
+[Eplipse 2020 のダウンロード](https://mergedoc.osdn.jp/#pleiades.html)
 
 ここでは、Pleiades が C:\pleiades にインストールされたものとする。
 
@@ -94,7 +94,7 @@ http://localhost:8080/ にアクセスして、Tomcatのページが表示され
 C:\pleiades\tomcat\9\conf フォルダの中に tomcat-users.xml があるので、それを好みのエディタで開く。
 
 末尾の </tomcat-users> のすぐ上に、以下の2行を追加する。
-```
+``` xml
   <role rolename="manager-gui"/>
   <user username="tomcat" password="tomcat" roles="manager-gui"/>
 </tomcat-users> <!-- この上に追加する -->
@@ -117,12 +117,12 @@ sukkiri-shop フォルダは以下のようにする。
 
 ```
 ./
-├── WEB-INF
-│   ├── classes
-│   ├── jsp
-│   └── lib
+├── WEB-INF/
+│   ├── classes/
+│   ├── jsp/
+│   └── lib/
 ├── index.html
-└── src
+└── src/
 ```
 
 index.html の内容は以下とする。
@@ -153,7 +153,7 @@ Antの設定ファイルは build.xml である。
 build.xmlを新規作成して、内容を以下のようにする。
 
 build.xml
-```
+``` xml
 <?xml version="1.0" ?>
 <project name="sukkiriShop" default="compile" basedir=".">
   <property name="src.dir" value="./src" />
@@ -186,7 +186,7 @@ build.xml
 </project>
 ```
 
-> ant [Enter]  
+```> ant [Enter]```  
 とすると、コンパイルが始まる。
 
 ソースディレクトリは ./src である。  
@@ -195,7 +195,10 @@ build.xml
 コンパイルオプションとして、includeAntRuntime="false" と encoding="UTF-8" を指定している。
 
 includeAntRuntime="false" は、
-```"warning: 'includeantruntime' was not set, defaulting to build.sysclasspath=last; set to false for repeatable builds"```
+```
+"warning: 'includeantruntime' was not set, defaulting to build.sysclasspath=last; set to false for repeatable builds"
+```
+
 という Warningを出力させないために指定している。  
 true だと、Antのランタイム・ライブラリを含むという設定になる。が、これは不必要である。
 だから、false と指定するのだけれど、これを指定すると、システム環境変数の CLASSPATH を参照しなくなる。  
@@ -205,6 +208,8 @@ encoding="UTF-8"　は、Windows環境だと、文字化けするからである
 
 コンパイル時に自動的に make_build.dir 処理をおこなっている。もし、./WEB-INF/classes が存在するならば、何もしない。
 
-> ant clean [Enter] で、./WEB-INF/classes を削除できる。
+```> ant clean [Enter] で、./WEB-INF/classes を削除できる。```
 
 
+
+修正時刻： Mon Jul 13 19:57:07 2020
