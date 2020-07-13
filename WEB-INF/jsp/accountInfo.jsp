@@ -6,7 +6,7 @@
   <head>
     <meta charset="UTF-8"/>
     <title>アカウント情報 - スッキリ商店</title>
-    <link rel="stylesheet" href="sukkiri.css"/>
+    <link rel="stylesheet" href="css/sukkiri.css"/>
   </head>
   <body>
     <h1>アカウント情報</h1>
@@ -35,7 +35,7 @@
        }
      }
     </script>
-    <script src="accountEdit.js"></script>
+    <script src="js/accountEdit.js"></script>
   </body>
 </html>
 

@@ -2,7 +2,8 @@
 <project name="sukkiriShop" default="compile" basedir=".">
   <property name="src.dir" value="./src" />
   <property name="dest.dir" value="./WEB-INF/classes" />
-  <property name="lib.dir" value="/opt/apache-tomcat-9.0.31/lib" />
+  <!-- <property name="lib.dir" value="/opt/apache-tomcat-9.0.31/lib" /> -->
+  <property name="lib.dir" value="C:/pleiades/tomcat/9/lib" />
   <property name="build.dir" value="./WEB-INF/classes" />
 
   <path id="classpath">
